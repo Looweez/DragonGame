@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.gbxPlayer1Dragon = new System.Windows.Forms.GroupBox();
-            this.lblPlayerHP = new System.Windows.Forms.Label();
-            this.btnPlayer1Atk = new System.Windows.Forms.Button();
-            this.btnPlayer1Sp = new System.Windows.Forms.Button();
             this.btnPlayer1Block = new System.Windows.Forms.Button();
+            this.btnPlayer1Sp = new System.Windows.Forms.Button();
+            this.btnPlayer1Atk = new System.Windows.Forms.Button();
+            this.lblPlayerHP = new System.Windows.Forms.Label();
             this.gbxBattleLog = new System.Windows.Forms.GroupBox();
             this.rtbBattleLog = new System.Windows.Forms.RichTextBox();
             this.gbxOpponent = new System.Windows.Forms.GroupBox();
-            this.lblOpponentDragon = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblOpponentDragon = new System.Windows.Forms.Label();
             this.gbxPlayer1Dragon.SuspendLayout();
             this.gbxBattleLog.SuspendLayout();
             this.gbxOpponent.SuspendLayout();
@@ -56,24 +56,14 @@
             this.gbxPlayer1Dragon.TabStop = false;
             this.gbxPlayer1Dragon.Text = "X the X Dragon\'s Turn";
             // 
-            // lblPlayerHP
+            // btnPlayer1Block
             // 
-            this.lblPlayerHP.AutoSize = true;
-            this.lblPlayerHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerHP.Location = new System.Drawing.Point(138, 37);
-            this.lblPlayerHP.Name = "lblPlayerHP";
-            this.lblPlayerHP.Size = new System.Drawing.Size(90, 31);
-            this.lblPlayerHP.TabIndex = 0;
-            this.lblPlayerHP.Text = "HP: X";
-            // 
-            // btnPlayer1Atk
-            // 
-            this.btnPlayer1Atk.Location = new System.Drawing.Point(18, 88);
-            this.btnPlayer1Atk.Name = "btnPlayer1Atk";
-            this.btnPlayer1Atk.Size = new System.Drawing.Size(329, 56);
-            this.btnPlayer1Atk.TabIndex = 1;
-            this.btnPlayer1Atk.Text = "Attack";
-            this.btnPlayer1Atk.UseVisualStyleBackColor = true;
+            this.btnPlayer1Block.Location = new System.Drawing.Point(17, 212);
+            this.btnPlayer1Block.Name = "btnPlayer1Block";
+            this.btnPlayer1Block.Size = new System.Drawing.Size(329, 56);
+            this.btnPlayer1Block.TabIndex = 3;
+            this.btnPlayer1Block.Text = "Block";
+            this.btnPlayer1Block.UseVisualStyleBackColor = true;
             // 
             // btnPlayer1Sp
             // 
@@ -84,14 +74,24 @@
             this.btnPlayer1Sp.Text = "Special Attack";
             this.btnPlayer1Sp.UseVisualStyleBackColor = true;
             // 
-            // btnPlayer1Block
+            // btnPlayer1Atk
             // 
-            this.btnPlayer1Block.Location = new System.Drawing.Point(17, 212);
-            this.btnPlayer1Block.Name = "btnPlayer1Block";
-            this.btnPlayer1Block.Size = new System.Drawing.Size(329, 56);
-            this.btnPlayer1Block.TabIndex = 3;
-            this.btnPlayer1Block.Text = "Block";
-            this.btnPlayer1Block.UseVisualStyleBackColor = true;
+            this.btnPlayer1Atk.Location = new System.Drawing.Point(18, 88);
+            this.btnPlayer1Atk.Name = "btnPlayer1Atk";
+            this.btnPlayer1Atk.Size = new System.Drawing.Size(329, 56);
+            this.btnPlayer1Atk.TabIndex = 1;
+            this.btnPlayer1Atk.Text = "Attack";
+            this.btnPlayer1Atk.UseVisualStyleBackColor = true;
+            // 
+            // lblPlayerHP
+            // 
+            this.lblPlayerHP.AutoSize = true;
+            this.lblPlayerHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerHP.Location = new System.Drawing.Point(138, 37);
+            this.lblPlayerHP.Name = "lblPlayerHP";
+            this.lblPlayerHP.Size = new System.Drawing.Size(90, 31);
+            this.lblPlayerHP.TabIndex = 0;
+            this.lblPlayerHP.Text = "HP: X";
             // 
             // gbxBattleLog
             // 
@@ -122,16 +122,6 @@
             this.gbxOpponent.TabStop = false;
             this.gbxOpponent.Text = "Opponent X";
             // 
-            // lblOpponentDragon
-            // 
-            this.lblOpponentDragon.AutoSize = true;
-            this.lblOpponentDragon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpponentDragon.Location = new System.Drawing.Point(63, 80);
-            this.lblOpponentDragon.Name = "lblOpponentDragon";
-            this.lblOpponentDragon.Size = new System.Drawing.Size(90, 31);
-            this.lblOpponentDragon.TabIndex = 1;
-            this.lblOpponentDragon.Text = "HP: X";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -142,10 +132,21 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "X, the X Dragon";
             // 
+            // lblOpponentDragon
+            // 
+            this.lblOpponentDragon.AutoSize = true;
+            this.lblOpponentDragon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpponentDragon.Location = new System.Drawing.Point(63, 80);
+            this.lblOpponentDragon.Name = "lblOpponentDragon";
+            this.lblOpponentDragon.Size = new System.Drawing.Size(90, 31);
+            this.lblOpponentDragon.TabIndex = 1;
+            this.lblOpponentDragon.Text = "HP: X";
+            // 
             // frmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(671, 494);
             this.Controls.Add(this.gbxOpponent);
             this.Controls.Add(this.gbxBattleLog);
