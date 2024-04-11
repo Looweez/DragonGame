@@ -16,7 +16,7 @@ namespace DragonGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameStart());
+            Application.Run(new frmGameStart());
         }
     }
 }
