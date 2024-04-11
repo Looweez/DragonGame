@@ -34,7 +34,7 @@
             this.txtPlayerName1 = new System.Windows.Forms.TextBox();
             this.btnSave1 = new System.Windows.Forms.Button();
             this.gbxDragonType1 = new System.Windows.Forms.GroupBox();
-            this.pbxPlayer1 = new System.Windows.Forms.PictureBox();
+            this.pbxFireDragon = new System.Windows.Forms.PictureBox();
             this.radEarth1 = new System.Windows.Forms.RadioButton();
             this.radWind1 = new System.Windows.Forms.RadioButton();
             this.radIce1 = new System.Windows.Forms.RadioButton();
@@ -44,7 +44,7 @@
             this.gbxPlayer2 = new System.Windows.Forms.GroupBox();
             this.txtDragonName2 = new System.Windows.Forms.TextBox();
             this.gbxDragonType2 = new System.Windows.Forms.GroupBox();
-            this.pbxPlayer2 = new System.Windows.Forms.PictureBox();
+            this.pbxFireDragon2 = new System.Windows.Forms.PictureBox();
             this.radEarth2 = new System.Windows.Forms.RadioButton();
             this.radWind2 = new System.Windows.Forms.RadioButton();
             this.radIce2 = new System.Windows.Forms.RadioButton();
@@ -55,12 +55,28 @@
             this.lblDragonName2 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.lblDragonStats = new System.Windows.Forms.Label();
+            this.pbxWindDragon = new System.Windows.Forms.PictureBox();
+            this.pbxIceDragon = new System.Windows.Forms.PictureBox();
+            this.pbxEarthDragon = new System.Windows.Forms.PictureBox();
+            this.pbxWindDragon2 = new System.Windows.Forms.PictureBox();
+            this.pbxEarthDragon2 = new System.Windows.Forms.PictureBox();
+            this.pbxIceDragon2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gbxPlayer1.SuspendLayout();
             this.gbxDragonType1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFireDragon)).BeginInit();
             this.gbxPlayer2.SuspendLayout();
             this.gbxDragonType2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxPlayer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFireDragon2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWindDragon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIceDragon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEarthDragon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWindDragon2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEarthDragon2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIceDragon2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxPlayer1
@@ -96,7 +112,7 @@
             this.txtPlayerName1.Location = new System.Drawing.Point(115, 28);
             this.txtPlayerName1.Name = "txtPlayerName1";
             this.txtPlayerName1.Size = new System.Drawing.Size(275, 20);
-            this.txtPlayerName1.TabIndex = 4;
+            this.txtPlayerName1.TabIndex = 0;
             // 
             // btnSave1
             // 
@@ -113,7 +129,11 @@
             // 
             this.gbxDragonType1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxDragonType1.Controls.Add(this.pbxPlayer1);
+            this.gbxDragonType1.Controls.Add(this.pictureBox1);
+            this.gbxDragonType1.Controls.Add(this.pbxEarthDragon);
+            this.gbxDragonType1.Controls.Add(this.pbxIceDragon);
+            this.gbxDragonType1.Controls.Add(this.pbxWindDragon);
+            this.gbxDragonType1.Controls.Add(this.pbxFireDragon);
             this.gbxDragonType1.Controls.Add(this.radEarth1);
             this.gbxDragonType1.Controls.Add(this.radWind1);
             this.gbxDragonType1.Controls.Add(this.radIce1);
@@ -125,14 +145,16 @@
             this.gbxDragonType1.TabStop = false;
             this.gbxDragonType1.Text = "Dragon Type";
             // 
-            // pbxPlayer1
+            // pbxFireDragon
             // 
-            this.pbxPlayer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxPlayer1.Location = new System.Drawing.Point(162, 33);
-            this.pbxPlayer1.Name = "pbxPlayer1";
-            this.pbxPlayer1.Size = new System.Drawing.Size(155, 116);
-            this.pbxPlayer1.TabIndex = 4;
-            this.pbxPlayer1.TabStop = false;
+            this.pbxFireDragon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxFireDragon.Image = ((System.Drawing.Image)(resources.GetObject("pbxFireDragon.Image")));
+            this.pbxFireDragon.Location = new System.Drawing.Point(159, 33);
+            this.pbxFireDragon.Name = "pbxFireDragon";
+            this.pbxFireDragon.Size = new System.Drawing.Size(163, 116);
+            this.pbxFireDragon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFireDragon.TabIndex = 4;
+            this.pbxFireDragon.TabStop = false;
             // 
             // radEarth1
             // 
@@ -184,7 +206,7 @@
             this.radFire1.Location = new System.Drawing.Point(24, 33);
             this.radFire1.Name = "radFire1";
             this.radFire1.Size = new System.Drawing.Size(80, 17);
-            this.radFire1.TabIndex = 0;
+            this.radFire1.TabIndex = 1;
             this.radFire1.TabStop = true;
             this.radFire1.Text = "Fire Dragon";
             this.radFire1.UseVisualStyleBackColor = true;
@@ -238,7 +260,11 @@
             // 
             this.gbxDragonType2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxDragonType2.Controls.Add(this.pbxPlayer2);
+            this.gbxDragonType2.Controls.Add(this.pictureBox2);
+            this.gbxDragonType2.Controls.Add(this.pbxIceDragon2);
+            this.gbxDragonType2.Controls.Add(this.pbxEarthDragon2);
+            this.gbxDragonType2.Controls.Add(this.pbxWindDragon2);
+            this.gbxDragonType2.Controls.Add(this.pbxFireDragon2);
             this.gbxDragonType2.Controls.Add(this.radEarth2);
             this.gbxDragonType2.Controls.Add(this.radWind2);
             this.gbxDragonType2.Controls.Add(this.radIce2);
@@ -250,14 +276,16 @@
             this.gbxDragonType2.TabStop = false;
             this.gbxDragonType2.Text = "Dragon Type";
             // 
-            // pbxPlayer2
+            // pbxFireDragon2
             // 
-            this.pbxPlayer2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxPlayer2.Location = new System.Drawing.Point(170, 33);
-            this.pbxPlayer2.Name = "pbxPlayer2";
-            this.pbxPlayer2.Size = new System.Drawing.Size(155, 116);
-            this.pbxPlayer2.TabIndex = 5;
-            this.pbxPlayer2.TabStop = false;
+            this.pbxFireDragon2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxFireDragon2.Image = ((System.Drawing.Image)(resources.GetObject("pbxFireDragon2.Image")));
+            this.pbxFireDragon2.Location = new System.Drawing.Point(170, 33);
+            this.pbxFireDragon2.Name = "pbxFireDragon2";
+            this.pbxFireDragon2.Size = new System.Drawing.Size(155, 116);
+            this.pbxFireDragon2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFireDragon2.TabIndex = 5;
+            this.pbxFireDragon2.TabStop = false;
             // 
             // radEarth2
             // 
@@ -373,6 +401,82 @@
             this.lblDragonStats.TabIndex = 3;
             this.lblDragonStats.Text = resources.GetString("lblDragonStats.Text");
             // 
+            // pbxWindDragon
+            // 
+            this.pbxWindDragon.Image = ((System.Drawing.Image)(resources.GetObject("pbxWindDragon.Image")));
+            this.pbxWindDragon.Location = new System.Drawing.Point(159, 33);
+            this.pbxWindDragon.Name = "pbxWindDragon";
+            this.pbxWindDragon.Size = new System.Drawing.Size(163, 116);
+            this.pbxWindDragon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxWindDragon.TabIndex = 5;
+            this.pbxWindDragon.TabStop = false;
+            // 
+            // pbxIceDragon
+            // 
+            this.pbxIceDragon.Image = ((System.Drawing.Image)(resources.GetObject("pbxIceDragon.Image")));
+            this.pbxIceDragon.Location = new System.Drawing.Point(159, 33);
+            this.pbxIceDragon.Name = "pbxIceDragon";
+            this.pbxIceDragon.Size = new System.Drawing.Size(163, 116);
+            this.pbxIceDragon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxIceDragon.TabIndex = 6;
+            this.pbxIceDragon.TabStop = false;
+            // 
+            // pbxEarthDragon
+            // 
+            this.pbxEarthDragon.Image = ((System.Drawing.Image)(resources.GetObject("pbxEarthDragon.Image")));
+            this.pbxEarthDragon.Location = new System.Drawing.Point(159, 33);
+            this.pbxEarthDragon.Name = "pbxEarthDragon";
+            this.pbxEarthDragon.Size = new System.Drawing.Size(163, 116);
+            this.pbxEarthDragon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxEarthDragon.TabIndex = 7;
+            this.pbxEarthDragon.TabStop = false;
+            // 
+            // pbxWindDragon2
+            // 
+            this.pbxWindDragon2.Image = ((System.Drawing.Image)(resources.GetObject("pbxWindDragon2.Image")));
+            this.pbxWindDragon2.Location = new System.Drawing.Point(170, 33);
+            this.pbxWindDragon2.Name = "pbxWindDragon2";
+            this.pbxWindDragon2.Size = new System.Drawing.Size(155, 116);
+            this.pbxWindDragon2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxWindDragon2.TabIndex = 6;
+            this.pbxWindDragon2.TabStop = false;
+            // 
+            // pbxEarthDragon2
+            // 
+            this.pbxEarthDragon2.Image = ((System.Drawing.Image)(resources.GetObject("pbxEarthDragon2.Image")));
+            this.pbxEarthDragon2.Location = new System.Drawing.Point(170, 33);
+            this.pbxEarthDragon2.Name = "pbxEarthDragon2";
+            this.pbxEarthDragon2.Size = new System.Drawing.Size(155, 116);
+            this.pbxEarthDragon2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxEarthDragon2.TabIndex = 7;
+            this.pbxEarthDragon2.TabStop = false;
+            // 
+            // pbxIceDragon2
+            // 
+            this.pbxIceDragon2.Image = ((System.Drawing.Image)(resources.GetObject("pbxIceDragon2.Image")));
+            this.pbxIceDragon2.Location = new System.Drawing.Point(170, 33);
+            this.pbxIceDragon2.Name = "pbxIceDragon2";
+            this.pbxIceDragon2.Size = new System.Drawing.Size(155, 116);
+            this.pbxIceDragon2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxIceDragon2.TabIndex = 8;
+            this.pbxIceDragon2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(159, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(163, 116);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(170, 33);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(155, 116);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
             // frmGameStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,12 +494,20 @@
             this.gbxPlayer1.PerformLayout();
             this.gbxDragonType1.ResumeLayout(false);
             this.gbxDragonType1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFireDragon)).EndInit();
             this.gbxPlayer2.ResumeLayout(false);
             this.gbxPlayer2.PerformLayout();
             this.gbxDragonType2.ResumeLayout(false);
             this.gbxDragonType2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxPlayer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFireDragon2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWindDragon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIceDragon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEarthDragon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxWindDragon2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEarthDragon2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxIceDragon2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,8 +539,16 @@
         private System.Windows.Forms.Label lblDragonName2;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label lblDragonStats;
-        private System.Windows.Forms.PictureBox pbxPlayer1;
-        private System.Windows.Forms.PictureBox pbxPlayer2;
+        private System.Windows.Forms.PictureBox pbxFireDragon;
+        private System.Windows.Forms.PictureBox pbxFireDragon2;
+        private System.Windows.Forms.PictureBox pbxWindDragon;
+        private System.Windows.Forms.PictureBox pbxEarthDragon;
+        private System.Windows.Forms.PictureBox pbxIceDragon;
+        private System.Windows.Forms.PictureBox pbxWindDragon2;
+        private System.Windows.Forms.PictureBox pbxIceDragon2;
+        private System.Windows.Forms.PictureBox pbxEarthDragon2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

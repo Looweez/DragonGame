@@ -38,6 +38,7 @@
             this.gbxOpponent = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblOpponentDragon = new System.Windows.Forms.Label();
+            this.btnRest = new System.Windows.Forms.Button();
             this.gbxPlayer1Dragon.SuspendLayout();
             this.gbxBattleLog.SuspendLayout();
             this.gbxOpponent.SuspendLayout();
@@ -45,6 +46,7 @@
             // 
             // gbxPlayer1Dragon
             // 
+            this.gbxPlayer1Dragon.Controls.Add(this.btnRest);
             this.gbxPlayer1Dragon.Controls.Add(this.btnPlayer1Block);
             this.gbxPlayer1Dragon.Controls.Add(this.btnPlayer1Sp);
             this.gbxPlayer1Dragon.Controls.Add(this.btnPlayer1Atk);
@@ -142,6 +144,15 @@
             this.lblOpponentDragon.TabIndex = 1;
             this.lblOpponentDragon.Text = "HP: X";
             // 
+            // btnRest
+            // 
+            this.btnRest.Location = new System.Drawing.Point(19, 88);
+            this.btnRest.Name = "btnRest";
+            this.btnRest.Size = new System.Drawing.Size(328, 180);
+            this.btnRest.TabIndex = 4;
+            this.btnRest.Text = "Rest";
+            this.btnRest.UseVisualStyleBackColor = true;
+            // 
             // frmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,5 +185,6 @@
         private System.Windows.Forms.GroupBox gbxOpponent;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblOpponentDragon;
+        private System.Windows.Forms.Button btnRest;
     }
 }
