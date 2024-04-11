@@ -146,9 +146,9 @@
             // 
             // btnRest
             // 
-            this.btnRest.Location = new System.Drawing.Point(19, 88);
+            this.btnRest.Location = new System.Drawing.Point(18, 85);
             this.btnRest.Name = "btnRest";
-            this.btnRest.Size = new System.Drawing.Size(328, 180);
+            this.btnRest.Size = new System.Drawing.Size(328, 183);
             this.btnRest.TabIndex = 4;
             this.btnRest.Text = "Rest";
             this.btnRest.UseVisualStyleBackColor = true;
@@ -158,7 +158,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(671, 494);
+            this.ClientSize = new System.Drawing.Size(685, 495);
             this.Controls.Add(this.gbxOpponent);
             this.Controls.Add(this.gbxBattleLog);
             this.Controls.Add(this.gbxPlayer1Dragon);

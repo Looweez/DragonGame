@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace DragonGame
 {
+    //group name: CeilingLouse
+    //team members: Ceili Rain Abrahams and Louise Lee
+    //student numbers: Ceili - ST10438681   Louise - ST10438795
     public partial class frmGameStart : Form
     {
         public frmGameStart()
@@ -17,7 +20,7 @@ namespace DragonGame
             InitializeComponent();
         }
 
-        private void radFire1_Click(object sender, EventArgs e)
+        private void radFire1_Click(object sender, EventArgs e) //changes appearance of form and dragon picturebox if 'fire' radio button selected
         {
 
             if (radFire1.Checked == true)
@@ -42,7 +45,7 @@ namespace DragonGame
             }*/
         }
 
-        private void radIce1_Click(object sender, EventArgs e)
+        private void radIce1_Click(object sender, EventArgs e) //changes appearance for ice
         {
 
             if (radIce1.Checked == true)
@@ -56,7 +59,7 @@ namespace DragonGame
             }
         }
 
-        private void radWind1_Click(object sender, EventArgs e)
+        private void radWind1_Click(object sender, EventArgs e) //changes appearance for wind
         {
 
             if (radWind1.Checked == true)
@@ -70,7 +73,7 @@ namespace DragonGame
             }
         }
 
-        private void radEarth1_Click(object sender, EventArgs e)
+        private void radEarth1_Click(object sender, EventArgs e) //changes appearance for earth
         {
 
             if (radEarth1.Checked == true)
@@ -84,7 +87,7 @@ namespace DragonGame
             }
         }
 
-        private void radFire2_Click(object sender, EventArgs e)
+        private void radFire2_Click(object sender, EventArgs e) //appearance change
         {
 
             if (radFire2.Checked == true)
@@ -98,7 +101,7 @@ namespace DragonGame
             }
         }
 
-        private void radIce2_Click(object sender, EventArgs e)
+        private void radIce2_Click(object sender, EventArgs e) //appearance change
         {
 
             if (radIce2.Checked == true)
@@ -112,7 +115,7 @@ namespace DragonGame
             }
         }
 
-        private void radWind2_Click(object sender, EventArgs e)
+        private void radWind2_Click(object sender, EventArgs e) //appearance change
         {
 
             if (radWind2.Checked == true)
@@ -126,7 +129,7 @@ namespace DragonGame
             }
         }
 
-        private void radEarth2_Click(object sender, EventArgs e)
+        private void radEarth2_Click(object sender, EventArgs e) //appearance change
         {
 
             if (radEarth2.Checked == true)
