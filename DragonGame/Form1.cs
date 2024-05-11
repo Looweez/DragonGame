@@ -61,7 +61,7 @@ namespace DragonGame
             btnSave1.Click += btnSave1_Click;
         }
 
-        if (btnSave1.click == true) AND (btnSave2.click == true)
+        /*if (btnSave1.click == true) AND (btnSave2.click == true)
         {
             btnSave1.Enabled = false;
             btnSave2.Enabled = false;
@@ -71,7 +71,7 @@ namespace DragonGame
                 btnStart.enabled = true;
             }
 
-        }
+        }*/
 
         private void saveValues(string playerName, string dragonName, string dragonType)
         {
