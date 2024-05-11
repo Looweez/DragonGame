@@ -373,7 +373,13 @@ namespace DragonGame
             if (txtDragonName1.Text != "" || txtPlayerName1.Text != "" || chosenDragon1 != null)
             {
                 saveValues(txtPlayerName1.Text, txtDragonName1.Text, chosenDragon1);
+                btnSave1.Enabled = false;
                 saveValuesCalled1 = true;
+                if (saveValuesCalled1 == true && saveValuesCalled2 == true)
+                {
+                    btnStart.Enabled = true;
+                    btnStart.BackColor = Color.White;
+                }
             }
             else
             {
@@ -386,7 +392,13 @@ namespace DragonGame
             if (txtDragonName2.Text != "" || txtPlayerName2.Text != "" || chosenDragon2 != null)
             {
                 saveValues(txtPlayerName2.Text, txtDragonName2.Text, chosenDragon2);
+                btnSave2.Enabled = false;
                 saveValuesCalled2 = true;
+                if (saveValuesCalled1 == true && saveValuesCalled2 == true)
+                {
+                    btnStart.Enabled = true;
+                    btnStart.BackColor = Color.White;
+                }
             }
             else
             {
