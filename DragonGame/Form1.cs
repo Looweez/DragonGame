@@ -53,6 +53,9 @@ namespace DragonGame
         bool btnSave1Clicked;  //boolean variables for the two save buttons
         bool btnSave2Clicked;
 
+        bool saveValuesCalled1;  //boolean variable that tracks when the saveValues method was called
+        bool saveValuesCalled2;
+
         string chosenDragon1;
         string chosenDragon2;
 
@@ -64,15 +67,16 @@ namespace DragonGame
         private void frmGameStart_Load(object sender, EventArgs e)
         {
             btnStart.Enabled = false;  //disables the start game button when the form loads
+            btnStart.BackColor = Color.Gray;
             if (btnSave1Clicked == true && btnSave2Clicked == true)
             {
                 btnSave1.Enabled = false;
                 btnSave2.Enabled = false;
 
-                //if saveValues() called for both then //not a proper condition yet
-                //{
-                //    btnStart.enabled = true;
-                //}
+                if (saveValuesCalled1 == true && saveValuesCalled2 == true)
+                {
+                    btnStart.Enabled = true;
+                }
 
             }
         }
@@ -185,7 +189,14 @@ namespace DragonGame
             {
                 pbxFireDragon.BringToFront();
                 this.BackColor = Color.Firebrick;
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon1 = FIRE_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon1 = null;
+                }
             }
             else
             {
@@ -201,7 +212,14 @@ namespace DragonGame
             {
                 this.BackColor = Color.LightCyan;
                 pbxIceDragon.BringToFront();
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon1 = ICE_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon1 = null;
+                }
             }
             else
             {
@@ -216,7 +234,14 @@ namespace DragonGame
             {
                 this.BackColor = Color.PaleGoldenrod;
                 pbxWindDragon.BringToFront();
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo , MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon1 = WIND_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon1 = null;
+                }
             }
             else
             {
@@ -231,7 +256,14 @@ namespace DragonGame
             {
                 this.BackColor = Color.OliveDrab;
                 pbxEarthDragon.BringToFront();
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo , MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon1 = EARTH_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon1 = null;
+                }
             }
             else
             {
@@ -246,7 +278,14 @@ namespace DragonGame
             {
                 this.BackColor = Color.Firebrick;
                 pbxFireDragon2.BringToFront();
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo , MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon2 = FIRE_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon2 = null;
+                }
             }
             else
             {
@@ -261,7 +300,14 @@ namespace DragonGame
             {
                 this.BackColor = Color.LightCyan;
                 pbxIceDragon2.BringToFront();
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon2 = ICE_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon2 = null;
+                }
             }
             else
             {
@@ -276,7 +322,14 @@ namespace DragonGame
             {
                 this.BackColor = Color.PaleGoldenrod;
                 pbxWindDragon2.BringToFront();
-                MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo , MessageBoxIcon.Question);
+                if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    chosenDragon2 = WIND_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon2 = null;
+                }
             }
             else
             {
@@ -293,7 +346,11 @@ namespace DragonGame
                 pbxEarthDragon2.BringToFront();
                 if (MessageBox.Show("Are you sure about your dragon?", "Dragon Type Confirmation", MessageBoxButtons.YesNo , MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-
+                    chosenDragon2 = EARTH_DRAG_NAME;
+                }
+                else
+                {
+                    chosenDragon2 = null;
                 }
             }
             else
@@ -313,13 +370,27 @@ namespace DragonGame
 
         private void btnSave1_Click(object sender, EventArgs e)
         {
-            if (txtDragonName1 != null && txtPlayerName1 != null /*&& radEarth1 clicked*/  )
+            if (txtDragonName1.Text != "" || txtPlayerName1.Text != "" || chosenDragon1 != null)
             {
-                
+                saveValues(txtPlayerName1.Text, txtDragonName1.Text, chosenDragon1);
+                saveValuesCalled1 = true;
             }
             else
             {
-                MessageBox.Show("Please fill in your name, dragon name and dragon type.");
+                MessageBox.Show("Please fill in your name, dragon name and/or dragon type.", "ERROR", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnSave2_Click(object sender, EventArgs e)
+        {
+            if (txtDragonName2.Text != "" || txtPlayerName2.Text != "" || chosenDragon2 != null)
+            {
+                saveValues(txtPlayerName2.Text, txtDragonName2.Text, chosenDragon2);
+                saveValuesCalled2 = true;
+            }
+            else
+            {
+                MessageBox.Show("Please fill in your name, dragon name and/or dragon type.", "ERROR", MessageBoxButtons.OK);
             }
         }
     }

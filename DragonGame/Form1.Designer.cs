@@ -439,6 +439,7 @@
             this.btnSave2.TabIndex = 9;
             this.btnSave2.Text = "Save";
             this.btnSave2.UseVisualStyleBackColor = true;
+            this.btnSave2.Click += new System.EventHandler(this.btnSave2_Click);
             // 
             // lblPlayerName2
             // 
