@@ -124,6 +124,7 @@
             this.btnSave1.TabIndex = 3;
             this.btnSave1.Text = "Save";
             this.btnSave1.UseVisualStyleBackColor = true;
+            this.btnSave1.Click += new System.EventHandler(this.btnSave1_Click);
             // 
             // gbxDragonType1
             // 
