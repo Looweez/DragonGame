@@ -43,18 +43,12 @@ namespace DragonGame
             
         }
 
-
-        public class randomRollGenerator //method for random number from 1 to 6
+        private int randomRoll() //method for random number from 1 to 6
         {
-            private Random random = new Random();
-            
-            public int randomRoll()
-            {
-                int randomRoll = random.Next(1,7);
-                return randomRoll;
-            }
+            Random random = new Random();
+            int randomRoll = random.Next(1, 7);
+            return randomRoll;
         }
-
 
         public string takeInitiative() //method for the initiative rolls
         {
@@ -62,20 +56,28 @@ namespace DragonGame
             int player2Roll;
             player1Roll = randomRoll();
             player2Roll = randomRoll();
-            while (player1Roll == player2Roll) 
+            while (player1Roll == player2Roll)
             {
                 player1Roll = randomRoll();
                 player2Roll = randomRoll();
             }
-            if (player1Roll > player2Roll)
+
+            return ""; //had to add to due not all code paths return a value error
+
+            if (player1Roll > player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
                 return "Player 1 starts. Their dice showed " + player1Roll;
             }
-            else if (player1Roll < player2Roll)
+            else if (player1Roll < player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
                 return "Player 2 starts. Their dice showed " + player2Roll;
             }
-            
+
+        }
+
+        private void updateTurn()  //updates the form depending on who has the current turn
+        {
+
         }
 
         private void frmBattle_Load(object sender, EventArgs e)
@@ -83,9 +85,9 @@ namespace DragonGame
             btnRest.Visible = false;
             takeInitiative();
 
-            while (dragonHP1 > 0 || dragonHP2 > 0)  //while both dragons are alive
+            while (dragonHP1 > 0 && dragonHP2 > 0)  //while both dragons are alive
             {
-            
+                
             }
 
         }
