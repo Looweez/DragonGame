@@ -62,6 +62,13 @@ namespace DragonGame
         public frmGameStart()
         {
             InitializeComponent();
+
+            //initialising arrays
+            P1data = new string[3];
+            P2data = new string[3];
+            P1values= new int[4];
+            P2values = new int[4];
+ 
         }
 
         private void frmGameStart_Load(object sender, EventArgs e)
@@ -147,7 +154,7 @@ namespace DragonGame
                         break;
 
                     case "Ice Dragon":
-                  P2data[0] = playerName;
+                        P2data[0] = playerName;
                         P2data[1] = dragonName;
                         P2data[2] = dragonType;
                         P2values[0] = ICE_DRAG_HP;
@@ -157,7 +164,7 @@ namespace DragonGame
                         break;
 
                     case "Wind Dragon":
-                  P2data[0] = playerName;
+                        P2data[0] = playerName;
                         P2data[1] = dragonName;
                         P2data[2] = dragonType;
                         P2values[0] = WIND_DRAG_HP;
@@ -167,7 +174,7 @@ namespace DragonGame
                         break;
 
                     case "Earth Dragon":
-                  P2data[0] = playerName;
+                        P2data[0] = playerName;
                         P2data[1] = dragonName;
                         P2data[2] = dragonType;
                         P2values[0] = EARTH_DRAG_HP;
@@ -203,7 +210,6 @@ namespace DragonGame
                 this.BackColor = Color.LavenderBlush;
             }
         }
-
 
         private void radIce1_Click(object sender, EventArgs e) //changes appearance for ice
         {
@@ -359,10 +365,10 @@ namespace DragonGame
             }
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void btnStart_Click(object sender, EventArgs e) //opens battle form after user clicks 'start game' button
         {
 
-            frmBattle frmBattle = new frmBattle();
+            frmBattle frmBattle = new frmBattle(P1values, P2values, P1data, P2data); //moves players data to frmBattle
             frmBattle.Show();
             this.Hide();
 
