@@ -37,9 +37,10 @@ namespace DragonGame
 
             //frmGameStart.saveValues(frmGameStart.txtPlayerName.text);
 
+            playerName1 = P1data[0];
             dragonName1 = P1data[1];
             dragonType1 = P1data[2];
-            gbxPlayer1Dragon.Text = dragonName1 + " the " + dragonType1 + " Dragon's turn";
+            gbxPlayer1Dragon.Text = dragonName1 + " the " + dragonType1 + "'s turn";
 
             dragonHP1 = P1values[0];
             lblPlayerHP.Text = "HP: " + dragonHP1; //hp shows up as 0,, idk why :(
@@ -65,6 +66,9 @@ namespace DragonGame
 
             if (player1Roll > player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
+                rtbBattleLog.Text = playerName1 + "'s dragon " + dragonName1 + " takes initiative!"
+                                                 + "\n---------------------------------------------------";
+                                                   
                 return player1Roll;
             }
             else if (player1Roll < player2Roll)  //if player 1's roll is higher, then they take the initiative
@@ -78,6 +82,11 @@ namespace DragonGame
 
         }
 
+        private void onLoad()
+        {
+            takeInitiative();
+        }
+
         private void updateTurn()  //updates the form depending on who has the current turn
         {
 
@@ -89,11 +98,11 @@ namespace DragonGame
             takeInitiative();
             if (takeInitiative() == player1Roll) 
             {
-                MessageBox.Show("Player 1 starts. Their dice showed" + player1Roll, "Turn initiative", MessageBoxButtons.OK);
+                MessageBox.Show("Player 1 starts. Their dice showed " + player1Roll, "Turn initiative", MessageBoxButtons.OK);
             }
             else if (takeInitiative() == player2Roll)
             {
-                MessageBox.Show("Player 2 starts. Their dice showed" + player2Roll, "Turn initiative", MessageBoxButtons.OK);
+                MessageBox.Show("Player 2 starts. Their dice showed " + player2Roll, "Turn initiative", MessageBoxButtons.OK);
             }
 
             while (dragonHP1 > 0 && dragonHP2 > 0)  //while both dragons are alive
