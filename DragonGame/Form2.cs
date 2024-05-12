@@ -50,20 +50,44 @@ namespace DragonGame
             
             public int randomRoll()
             {
-                return random.Next(1, 7);
+                int randomRoll = random.Next(1,7);
+                return randomRoll;
             }
         }
 
-        private class takeInitiative    //method for the initiative rolls
+
+        public string takeInitiative() //method for the initiative rolls
         {
             int player1Roll;
             int player2Roll;
-            player1Roll = randomRollGenerator;
-            //while ()
+            player1Roll = randomRoll();
+            player2Roll = randomRoll();
+            while (player1Roll == player2Roll) 
+            {
+                player1Roll = randomRoll();
+                player2Roll = randomRoll();
+            }
+            if (player1Roll > player2Roll)
+            {
+                return "Player 1 starts. Their dice showed " + player1Roll;
+            }
+            else if (player1Roll < player2Roll)
+            {
+                return "Player 2 starts. Their dice showed " + player2Roll;
+            }
             
         }
 
-        
+        private void frmBattle_Load(object sender, EventArgs e)
+        {
+            btnRest.Visible = false;
+            takeInitiative();
 
+            while (dragonHP1 > 0 || dragonHP2 > 0)  //while both dragons are alive
+            {
+            
+            }
+
+        }
     }
 }

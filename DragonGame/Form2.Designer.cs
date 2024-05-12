@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbxPlayer1Dragon = new System.Windows.Forms.GroupBox();
+            this.btnRest = new System.Windows.Forms.Button();
             this.btnPlayer1Block = new System.Windows.Forms.Button();
             this.btnPlayer1Sp = new System.Windows.Forms.Button();
             this.btnPlayer1Atk = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.gbxOpponent = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblOpponentDragon = new System.Windows.Forms.Label();
-            this.btnRest = new System.Windows.Forms.Button();
             this.gbxPlayer1Dragon.SuspendLayout();
             this.gbxBattleLog.SuspendLayout();
             this.gbxOpponent.SuspendLayout();
@@ -57,6 +57,15 @@
             this.gbxPlayer1Dragon.TabIndex = 0;
             this.gbxPlayer1Dragon.TabStop = false;
             this.gbxPlayer1Dragon.Text = "X the X Dragon\'s Turn";
+            // 
+            // btnRest
+            // 
+            this.btnRest.Location = new System.Drawing.Point(18, 85);
+            this.btnRest.Name = "btnRest";
+            this.btnRest.Size = new System.Drawing.Size(328, 183);
+            this.btnRest.TabIndex = 4;
+            this.btnRest.Text = "Rest";
+            this.btnRest.UseVisualStyleBackColor = true;
             // 
             // btnPlayer1Block
             // 
@@ -144,15 +153,6 @@
             this.lblOpponentDragon.TabIndex = 1;
             this.lblOpponentDragon.Text = "HP: X";
             // 
-            // btnRest
-            // 
-            this.btnRest.Location = new System.Drawing.Point(18, 85);
-            this.btnRest.Name = "btnRest";
-            this.btnRest.Size = new System.Drawing.Size(328, 183);
-            this.btnRest.TabIndex = 4;
-            this.btnRest.Text = "Rest";
-            this.btnRest.UseVisualStyleBackColor = true;
-            // 
             // frmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +164,7 @@
             this.Controls.Add(this.gbxPlayer1Dragon);
             this.Name = "frmBattle";
             this.Text = "Battle Log";
+            this.Load += new System.EventHandler(this.frmBattle_Load);
             this.gbxPlayer1Dragon.ResumeLayout(false);
             this.gbxPlayer1Dragon.PerformLayout();
             this.gbxBattleLog.ResumeLayout(false);
