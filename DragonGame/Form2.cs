@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +32,8 @@ namespace DragonGame
         {
             InitializeComponent();
 
+            //frmGameStart.saveValues(frmGameStart.txtPlayerName.text);
+
             dragonName1 = P1data[1];
             dragonType1 = P1data[2];
             gbxPlayer1Dragon.Text = dragonName1 + " the " + dragonType1 + " Dragon's turn";
@@ -49,6 +52,15 @@ namespace DragonGame
             {
                 return random.Next(1, 7);
             }
+        }
+
+        private class takeInitiative    //method for the initiative rolls
+        {
+            int player1Roll;
+            int player2Roll;
+            player1Roll = randomRollGenerator;
+            //while ()
+            
         }
 
         
