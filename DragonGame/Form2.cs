@@ -28,6 +28,9 @@ namespace DragonGame
         int dragonBLOCK1;
         int dragonBLOCK2;
 
+        int player1Roll;
+        int player2Roll;
+
         public frmBattle(int[] P1values, int[] P2values, string[] P1data, string[] P2data)
         {
             InitializeComponent();
@@ -50,10 +53,8 @@ namespace DragonGame
             return randomRoll;
         }
 
-        public string takeInitiative() //method for the initiative rolls
+        public int takeInitiative() //method for the initiative rolls
         {
-            int player1Roll;
-            int player2Roll;
             player1Roll = randomRoll();
             player2Roll = randomRoll();
             while (player1Roll == player2Roll)
@@ -62,15 +63,17 @@ namespace DragonGame
                 player2Roll = randomRoll();
             }
 
-            return ""; //had to add to due not all code paths return a value error
-
             if (player1Roll > player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
-                return "Player 1 starts. Their dice showed " + player1Roll;
+                return player1Roll;
             }
             else if (player1Roll < player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
-                return "Player 2 starts. Their dice showed " + player2Roll;
+                return player2Roll;
+            }
+            else
+            {
+                return 0; //had to add due to "not all code paths return a value" error
             }
 
         }
@@ -84,6 +87,14 @@ namespace DragonGame
         {
             btnRest.Visible = false;
             takeInitiative();
+            if (takeInitiative() == player1Roll) 
+            {
+                MessageBox.Show("Player 1 starts. Their dice showed" + player1Roll, "Turn initiative", MessageBoxButtons.OK);
+            }
+            else if (takeInitiative() == player2Roll)
+            {
+                MessageBox.Show("Player 2 starts. Their dice showed" + player2Roll, "Turn initiative", MessageBoxButtons.OK);
+            }
 
             while (dragonHP1 > 0 && dragonHP2 > 0)  //while both dragons are alive
             {
