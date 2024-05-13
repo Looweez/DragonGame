@@ -29,7 +29,9 @@ namespace DragonGame
         int dragonBLOCK1;
         int dragonBLOCK2;
 
-        bool block = false;
+        bool block1 = false;
+        bool block2 = false;
+
         bool player1Turn = false;
         bool player2Turn = false;
 
@@ -64,6 +66,7 @@ namespace DragonGame
 
         private void frmBattle_Load(object sender, EventArgs e)
         {
+            
             btnRest.Visible = false;
             takeInitiative();
             if (takeInitiative() == player1Roll)
@@ -74,6 +77,7 @@ namespace DragonGame
             {
                 MessageBox.Show("Player 2 starts. Their dice showed " + player2Roll, "Turn initiative", MessageBoxButtons.OK);
             }
+            
         }
 
         private int randomRoll() //method for random number from 1 to 6
@@ -83,8 +87,9 @@ namespace DragonGame
             return randomRoll;
         }
 
-        public int takeInitiative() //method for the initiative rolls
+        public int takeInitiative() //method for the initiative rolls, determines who starts each turn
         {
+            rtbBattleLog.Text += "\n-------------------------------------------------\n NEW TURN \n-------------------------------------------------\n";
             player1Roll = randomRoll();
             player2Roll = randomRoll();
             while (player1Roll == player2Roll) //if equal roll again
@@ -95,15 +100,15 @@ namespace DragonGame
 
             if (player1Roll > player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
-                rtbBattleLog.Text = playerName1 + "'s dragon " + dragonName1 + " takes initiative!"
-                                                 + "\n---------------------------------------------------\n" + playerName1 + "'s turn:";
-                //current players turn gbx
+                rtbBattleLog.Text = "";
+
+                rtbBattleLog.Text += "\n" + playerName1 + "'s dragon " + dragonName1 + " takes initiative"
+                                                 + "\n---------------------------------------------------\n" + playerName1 + "'s turn:\n";
+
                 gbxTurnPlayerDragon.Text = dragonName1 + " the " + dragonType1 + "'s turn";
                 lblPlayerHP.Text = "HP: " + dragonHP1;
-
-                //opponent gbx
                 gbxOpponent.Text = "Opponent: " + playerName2;
-                lblOpponentDragon.Text = dragonName2 + ", the " + dragonType2;
+                lblOpponentDragon.Text = "\n" + dragonName2 + ", the " + dragonType2;
                 lblOpponentHP.Text = "HP: " + dragonHP2;
 
                 player1Turn = true;
@@ -113,13 +118,13 @@ namespace DragonGame
             }
             else if (player1Roll < player2Roll)  //if player 2's roll is higher, then they take the initiative
             {
-                rtbBattleLog.Text = playerName1 + "'s dragon " + dragonName1 + " takes initiative!"
-                                                 + "\n---------------------------------------------------\n" + playerName1 + "'s turn:";
-                //current players turn gbx
-                gbxTurnPlayerDragon.Text = dragonName2 + " the " + dragonType2 + "'s turn";
-                lblPlayerHP.Text = "HP: " + dragonHP2;
+                rtbBattleLog.Text = "";
 
-                //opponent gbx
+                rtbBattleLog.Text += "\n" + playerName2 + "'s dragon " + dragonName2 + " takes initiative!"
+                                                 + "\n---------------------------------------------------\n" + playerName2 + "'s turn:\n";
+
+                gbxTurnPlayerDragon.Text = "\n" + dragonName2 + " the " + dragonType2 + "'s turn";
+                lblPlayerHP.Text = "HP: " + dragonHP2;
                 gbxOpponent.Text = "Opponent: " + playerName1;
                 lblOpponentDragon.Text = dragonName1 + ", the " + dragonType1;
                 lblOpponentHP.Text = "HP: " + dragonHP1;
@@ -136,65 +141,191 @@ namespace DragonGame
 
         }
 
-        private void btnPlayerBlock_Click(object sender, EventArgs e) //blocking
+        private void playerTurn()
+        {
+            
+            if (player1Turn == true && !player2Turn) //if player 2 has not had their turn
+            {
+                player1Turn = false;
+                player2Turn = true;
+
+                rtbBattleLog.Text += "\n" + playerName2 + "'s turn:\n";
+                gbxTurnPlayerDragon.Text = dragonName2 + " the " + dragonType2 + "'s turn";
+                lblPlayerHP.Text = "HP: " + dragonHP2;
+
+                gbxOpponent.Text = "Opponent: " + playerName1;
+                lblOpponentDragon.Text = dragonName1 + ", the " + dragonType1;
+                lblOpponentHP.Text = "HP: " + dragonHP1;
+            }
+            else if (player2Turn == true && !player1Turn) //if player 1 has not had their turn
+            {
+                player2Turn = false;
+                player1Turn = true;
+
+                rtbBattleLog.Text += "\n" + playerName1 + "'s turn:\n";
+                gbxTurnPlayerDragon.Text = dragonName1 + " the " + dragonType1 + "'s turn";
+                lblPlayerHP.Text = "HP: " + dragonHP1;
+
+                gbxOpponent.Text = "Opponent: " + playerName2;
+                lblOpponentDragon.Text = dragonName2 + ", the " + dragonType2;
+                lblOpponentHP.Text = "HP: " + dragonHP2;
+            }
+
+            if (!player1Turn && !player2Turn) //if both players have had their turn
+            {
+                takeInitiative();
+            }
+            
+
+        }
+
+        //
+        //blocking
+        //
+        private void btnPlayerBlock_Click(object sender, EventArgs e)
         {
             if (player1Turn == true)
             {
-                block = true;
-                rtbBattleLog.Text = dragonName1 + " blocks for " + dragonBLOCK1 + " damage!";
+                block1 = true;
+                block2 = false;
+                rtbBattleLog.Text += "\n" + dragonName1 + " blocks for " + dragonBLOCK1 + " damage!";
+                
             }
             else if (player2Turn == true)
             {
-                block = true;
-                rtbBattleLog.Text = dragonName1 + " blocks for " + dragonBLOCK1 + " damage!";
+                block2 = true;
+                block1 = false;
+                rtbBattleLog.Text += "\n" + dragonName2 + " blocks for " + dragonBLOCK2 + " damage!";
+                
             }
-        }
 
-        private void btnPlayerAtk_Click(object sender, EventArgs e) //attacking
+            playerTurn();
+        }
+        //
+        //attacking
+        //
+        private void btnPlayerAtk_Click(object sender, EventArgs e)
         {
-            if (player1Turn == true && block == false)
+            int damage = 0;
+            if (player1Turn == true && block2 == false) //player 1's turn and player 2 is not blocking
             {
                 dragonHP2 -= dragonATK1;
-                rtbBattleLog.Text = dragonName1 + " attacks " + dragonName2 + "!" + dragonName2 + " takes " + dragonATK1 + " damage, and is now on " + dragonHP2 + "HP"
+                rtbBattleLog.Text += "\n" + dragonName1 + " attacks " + dragonName2 + "! " + dragonName2 + " takes " + dragonATK1 + " damage, and is now on " + dragonHP2 + "HP"
                                                  + "\n---------------------------------------------------\n";
             }
-            else if (player1Turn == true && block == true)
+            else if (player1Turn == true && block2 == true) //players 1's turn and player 2 is blocking
             {
-                dragonATK1 -= dragonBLOCK2;
-                if (dragonATK1 <= 0)
+                damage = dragonATK1 - dragonBLOCK2;
+                if (damage >= 0)
                 {
-                    dragonATK1 = 0;
+                    dragonHP2 -= dragonATK1;
                 }
-                dragonATK1 -= dragonHP2;
-                rtbBattleLog.Text = dragonName1 + " attacks " + dragonName2 + "!" + dragonName2 + " takes " + dragonATK1 + " damage, and is now on " + dragonHP2 + "HP"
+                else 
+                {
+                    dragonHP2 -= 0;
+                    damage = 0;
+                }
+
+                rtbBattleLog.Text += "\n" + dragonName1 + " attacks " + dragonName2 + "! " + dragonName2 + " takes " + damage + " damage, and is now on " + dragonHP2 + "HP"
                                                  + "\n---------------------------------------------------\n";
+
+                block2 = false;
             }
 
-            if (player2Turn == true && block == false)
+            else if (player2Turn == true && block1 == false) //player 2's turn and player 1 is not blocking
             {
                 dragonHP1 -= dragonATK2;
-                rtbBattleLog.Text = dragonName2 + " attacks " + dragonName1 + "!" + dragonName1 + " takes " + dragonATK2 + " damage, and is now on " + dragonHP1 + "HP"
+                rtbBattleLog.Text += "\n" + dragonName2 + " attacks " + dragonName1 + "! " + dragonName1 + " takes " + dragonATK2 + " damage, and is now on " + dragonHP1 + "HP"
                                  + "\n---------------------------------------------------\n";
             }
-            else if (player2Turn == true && block == true)
+            else if (player2Turn == true && block1 == true) //player 2's turn and player 1 blocking
             {
-                dragonATK2 -= dragonBLOCK1;
-                if (dragonATK2 <= 0)
+                damage = dragonATK2 - dragonBLOCK1;
+                if (damage >= 0)
                 {
-                    dragonATK2 = 0;
+                    dragonHP1 -= dragonATK2;
                 }
-                dragonATK2 -= dragonHP1;
-                rtbBattleLog.Text = dragonName2 + " attacks " + dragonName1 + "!" + dragonName1 + " takes " + dragonATK2 + " damage, and is now on " + dragonHP1 + "HP"
+                else
+                {
+                    dragonHP1 -= 0;
+                    damage = 0;
+                }
+                
+                rtbBattleLog.Text += "\n" + dragonName2 + " attacks " + dragonName1 + "! " + dragonName1 + " takes " + damage + " damage, and is now on " + dragonHP1 + "HP"
                                                  + "\n---------------------------------------------------\n";
+                block1 = false;
             }
-        }
 
-        private void btnPlayerSp_Click(object sender, EventArgs e) //special attack
+            playerTurn();
+
+        }
+        //
+        //special attacking
+        //
+        private void btnPlayerSp_Click(object sender, EventArgs e)
         {
-            if (player1Turn == true && block == false)
+            int damage = 0;
+            if (player1Turn == true && block2 == false)
             {
                 dragonHP2 -= dragonSPATK1;
+                rtbBattleLog.Text += "\n" + dragonName1 + " special attacks " + dragonName2 + "! " + dragonName2 + " takes " + dragonSPATK1 + " damage, and is now on " + dragonHP2 + "HP"
+                                                 + "\n---------------------------------------------------\n";
             }
+            else if (player1Turn == true)
+            {
+                if (block2 == true)
+                {
+                    dragonSPATK1 -= dragonBLOCK2;
+                    if (damage >= 0)
+                    {
+                        dragonHP2 -= dragonSPATK1;
+                    }
+                }
+                else
+                {
+                    dragonHP2 -= dragonSPATK1;
+                }
+
+                block2 = false;
+
+                rtbBattleLog.Text += "\n" + dragonName1 + " special attacks " + dragonName2 + "! " + dragonName2 + " takes " + dragonSPATK1 + " damage, and is now on " + dragonHP2 + "HP"
+                                                 + "\n---------------------------------------------------\n";
+            }
+
+            else if (player2Turn == true && block1 == false)
+            {
+                dragonHP1 -= dragonSPATK2;
+                rtbBattleLog.Text += "\n" + dragonName2 + " special attacks " + dragonName1 + "! " + dragonName1 + " takes " + dragonSPATK2 + " damage, and is now on " + dragonHP1 + "HP"
+                                 + "\n---------------------------------------------------\n";
+            }
+            else if (player2Turn == true)
+            {
+                if (block1 == true)
+                {
+                    dragonSPATK2 -= dragonBLOCK1;
+                    if (dragonSPATK2 >= 0)
+                    {
+                        dragonHP1 -= dragonSPATK2;
+                    }
+                }
+                else
+                {
+                    dragonHP1 -= dragonSPATK2;
+                }
+
+                block1 = false;
+
+                rtbBattleLog.Text += "\n" + dragonName2 + " special attacks " + dragonName1 + "! " + dragonName1 + " takes " + dragonSPATK2 + " damage, and is now on " + dragonHP1 + "HP"
+                                                 + "\n---------------------------------------------------\n";
+            }
+
+            playerTurn();
+
+        }
+
+        private void btnRest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

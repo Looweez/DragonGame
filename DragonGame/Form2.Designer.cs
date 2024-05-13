@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.gbxTurnPlayerDragon = new System.Windows.Forms.GroupBox();
+            this.btnRest = new System.Windows.Forms.Button();
             this.btnPlayerBlock = new System.Windows.Forms.Button();
             this.btnPlayerSp = new System.Windows.Forms.Button();
             this.btnPlayerAtk = new System.Windows.Forms.Button();
             this.lblPlayerHP = new System.Windows.Forms.Label();
-            this.btnRest = new System.Windows.Forms.Button();
             this.gbxBattleLog = new System.Windows.Forms.GroupBox();
             this.rtbBattleLog = new System.Windows.Forms.RichTextBox();
             this.gbxOpponent = new System.Windows.Forms.GroupBox();
@@ -57,6 +57,16 @@
             this.gbxTurnPlayerDragon.TabIndex = 0;
             this.gbxTurnPlayerDragon.TabStop = false;
             this.gbxTurnPlayerDragon.Text = "X the X Dragon\'s Turn";
+            // 
+            // btnRest
+            // 
+            this.btnRest.Location = new System.Drawing.Point(52, 171);
+            this.btnRest.Name = "btnRest";
+            this.btnRest.Size = new System.Drawing.Size(328, 183);
+            this.btnRest.TabIndex = 4;
+            this.btnRest.Text = "Rest";
+            this.btnRest.UseVisualStyleBackColor = true;
+            this.btnRest.Click += new System.EventHandler(this.btnRest_Click);
             // 
             // btnPlayerBlock
             // 
@@ -97,15 +107,6 @@
             this.lblPlayerHP.Size = new System.Drawing.Size(90, 31);
             this.lblPlayerHP.TabIndex = 0;
             this.lblPlayerHP.Text = "HP: X";
-            // 
-            // btnRest
-            // 
-            this.btnRest.Location = new System.Drawing.Point(18, 88);
-            this.btnRest.Name = "btnRest";
-            this.btnRest.Size = new System.Drawing.Size(328, 183);
-            this.btnRest.TabIndex = 4;
-            this.btnRest.Text = "Rest";
-            this.btnRest.UseVisualStyleBackColor = true;
             // 
             // gbxBattleLog
             // 
