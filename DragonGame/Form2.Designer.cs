@@ -28,71 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbxPlayer1Dragon = new System.Windows.Forms.GroupBox();
-            this.btnRest = new System.Windows.Forms.Button();
-            this.btnPlayer1Block = new System.Windows.Forms.Button();
-            this.btnPlayer1Sp = new System.Windows.Forms.Button();
-            this.btnPlayer1Atk = new System.Windows.Forms.Button();
+            this.gbxTurnPlayerDragon = new System.Windows.Forms.GroupBox();
+            this.btnPlayerBlock = new System.Windows.Forms.Button();
+            this.btnPlayerSp = new System.Windows.Forms.Button();
+            this.btnPlayerAtk = new System.Windows.Forms.Button();
             this.lblPlayerHP = new System.Windows.Forms.Label();
+            this.btnRest = new System.Windows.Forms.Button();
             this.gbxBattleLog = new System.Windows.Forms.GroupBox();
             this.rtbBattleLog = new System.Windows.Forms.RichTextBox();
             this.gbxOpponent = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblOpponentDragon = new System.Windows.Forms.Label();
-            this.gbxPlayer1Dragon.SuspendLayout();
+            this.lblOpponentHP = new System.Windows.Forms.Label();
+            this.gbxTurnPlayerDragon.SuspendLayout();
             this.gbxBattleLog.SuspendLayout();
             this.gbxOpponent.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gbxPlayer1Dragon
+            // gbxTurnPlayerDragon
             // 
-            this.gbxPlayer1Dragon.Controls.Add(this.btnRest);
-            this.gbxPlayer1Dragon.Controls.Add(this.btnPlayer1Block);
-            this.gbxPlayer1Dragon.Controls.Add(this.btnPlayer1Sp);
-            this.gbxPlayer1Dragon.Controls.Add(this.btnPlayer1Atk);
-            this.gbxPlayer1Dragon.Controls.Add(this.lblPlayerHP);
-            this.gbxPlayer1Dragon.Location = new System.Drawing.Point(12, 12);
-            this.gbxPlayer1Dragon.Name = "gbxPlayer1Dragon";
-            this.gbxPlayer1Dragon.Size = new System.Drawing.Size(362, 289);
-            this.gbxPlayer1Dragon.TabIndex = 0;
-            this.gbxPlayer1Dragon.TabStop = false;
-            this.gbxPlayer1Dragon.Text = "X the X Dragon\'s Turn";
+            this.gbxTurnPlayerDragon.Controls.Add(this.btnRest);
+            this.gbxTurnPlayerDragon.Controls.Add(this.btnPlayerBlock);
+            this.gbxTurnPlayerDragon.Controls.Add(this.btnPlayerSp);
+            this.gbxTurnPlayerDragon.Controls.Add(this.btnPlayerAtk);
+            this.gbxTurnPlayerDragon.Controls.Add(this.lblPlayerHP);
+            this.gbxTurnPlayerDragon.Location = new System.Drawing.Point(12, 12);
+            this.gbxTurnPlayerDragon.Name = "gbxTurnPlayerDragon";
+            this.gbxTurnPlayerDragon.Size = new System.Drawing.Size(362, 289);
+            this.gbxTurnPlayerDragon.TabIndex = 0;
+            this.gbxTurnPlayerDragon.TabStop = false;
+            this.gbxTurnPlayerDragon.Text = "X the X Dragon\'s Turn";
             // 
-            // btnRest
+            // btnPlayerBlock
             // 
-            this.btnRest.Location = new System.Drawing.Point(18, 85);
-            this.btnRest.Name = "btnRest";
-            this.btnRest.Size = new System.Drawing.Size(328, 183);
-            this.btnRest.TabIndex = 4;
-            this.btnRest.Text = "Rest";
-            this.btnRest.UseVisualStyleBackColor = true;
+            this.btnPlayerBlock.Location = new System.Drawing.Point(17, 212);
+            this.btnPlayerBlock.Name = "btnPlayerBlock";
+            this.btnPlayerBlock.Size = new System.Drawing.Size(329, 56);
+            this.btnPlayerBlock.TabIndex = 3;
+            this.btnPlayerBlock.Text = "Block";
+            this.btnPlayerBlock.UseVisualStyleBackColor = true;
+            this.btnPlayerBlock.Click += new System.EventHandler(this.btnPlayerBlock_Click);
             // 
-            // btnPlayer1Block
+            // btnPlayerSp
             // 
-            this.btnPlayer1Block.Location = new System.Drawing.Point(17, 212);
-            this.btnPlayer1Block.Name = "btnPlayer1Block";
-            this.btnPlayer1Block.Size = new System.Drawing.Size(329, 56);
-            this.btnPlayer1Block.TabIndex = 3;
-            this.btnPlayer1Block.Text = "Block";
-            this.btnPlayer1Block.UseVisualStyleBackColor = true;
+            this.btnPlayerSp.Location = new System.Drawing.Point(18, 150);
+            this.btnPlayerSp.Name = "btnPlayerSp";
+            this.btnPlayerSp.Size = new System.Drawing.Size(329, 56);
+            this.btnPlayerSp.TabIndex = 2;
+            this.btnPlayerSp.Text = "Special Attack";
+            this.btnPlayerSp.UseVisualStyleBackColor = true;
+            this.btnPlayerSp.Click += new System.EventHandler(this.btnPlayerSp_Click);
             // 
-            // btnPlayer1Sp
+            // btnPlayerAtk
             // 
-            this.btnPlayer1Sp.Location = new System.Drawing.Point(18, 150);
-            this.btnPlayer1Sp.Name = "btnPlayer1Sp";
-            this.btnPlayer1Sp.Size = new System.Drawing.Size(329, 56);
-            this.btnPlayer1Sp.TabIndex = 2;
-            this.btnPlayer1Sp.Text = "Special Attack";
-            this.btnPlayer1Sp.UseVisualStyleBackColor = true;
-            // 
-            // btnPlayer1Atk
-            // 
-            this.btnPlayer1Atk.Location = new System.Drawing.Point(18, 88);
-            this.btnPlayer1Atk.Name = "btnPlayer1Atk";
-            this.btnPlayer1Atk.Size = new System.Drawing.Size(329, 56);
-            this.btnPlayer1Atk.TabIndex = 1;
-            this.btnPlayer1Atk.Text = "Attack";
-            this.btnPlayer1Atk.UseVisualStyleBackColor = true;
+            this.btnPlayerAtk.Location = new System.Drawing.Point(18, 88);
+            this.btnPlayerAtk.Name = "btnPlayerAtk";
+            this.btnPlayerAtk.Size = new System.Drawing.Size(329, 56);
+            this.btnPlayerAtk.TabIndex = 1;
+            this.btnPlayerAtk.Text = "Attack";
+            this.btnPlayerAtk.UseVisualStyleBackColor = true;
+            this.btnPlayerAtk.Click += new System.EventHandler(this.btnPlayerAtk_Click);
             // 
             // lblPlayerHP
             // 
@@ -103,6 +97,15 @@
             this.lblPlayerHP.Size = new System.Drawing.Size(90, 31);
             this.lblPlayerHP.TabIndex = 0;
             this.lblPlayerHP.Text = "HP: X";
+            // 
+            // btnRest
+            // 
+            this.btnRest.Location = new System.Drawing.Point(18, 88);
+            this.btnRest.Name = "btnRest";
+            this.btnRest.Size = new System.Drawing.Size(328, 183);
+            this.btnRest.TabIndex = 4;
+            this.btnRest.Text = "Rest";
+            this.btnRest.UseVisualStyleBackColor = true;
             // 
             // gbxBattleLog
             // 
@@ -124,8 +127,8 @@
             // 
             // gbxOpponent
             // 
-            this.gbxOpponent.Controls.Add(this.label1);
             this.gbxOpponent.Controls.Add(this.lblOpponentDragon);
+            this.gbxOpponent.Controls.Add(this.lblOpponentHP);
             this.gbxOpponent.Location = new System.Drawing.Point(420, 89);
             this.gbxOpponent.Name = "gbxOpponent";
             this.gbxOpponent.Size = new System.Drawing.Size(228, 148);
@@ -133,25 +136,25 @@
             this.gbxOpponent.TabStop = false;
             this.gbxOpponent.Text = "Opponent X";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "X, the X Dragon";
-            // 
             // lblOpponentDragon
             // 
             this.lblOpponentDragon.AutoSize = true;
-            this.lblOpponentDragon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpponentDragon.Location = new System.Drawing.Point(63, 80);
+            this.lblOpponentDragon.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpponentDragon.Location = new System.Drawing.Point(35, 43);
             this.lblOpponentDragon.Name = "lblOpponentDragon";
-            this.lblOpponentDragon.Size = new System.Drawing.Size(90, 31);
-            this.lblOpponentDragon.TabIndex = 1;
-            this.lblOpponentDragon.Text = "HP: X";
+            this.lblOpponentDragon.Size = new System.Drawing.Size(161, 24);
+            this.lblOpponentDragon.TabIndex = 2;
+            this.lblOpponentDragon.Text = "X, the X Dragon";
+            // 
+            // lblOpponentHP
+            // 
+            this.lblOpponentHP.AutoSize = true;
+            this.lblOpponentHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpponentHP.Location = new System.Drawing.Point(63, 80);
+            this.lblOpponentHP.Name = "lblOpponentHP";
+            this.lblOpponentHP.Size = new System.Drawing.Size(90, 31);
+            this.lblOpponentHP.TabIndex = 1;
+            this.lblOpponentHP.Text = "HP: X";
             // 
             // frmBattle
             // 
@@ -161,12 +164,12 @@
             this.ClientSize = new System.Drawing.Size(685, 495);
             this.Controls.Add(this.gbxOpponent);
             this.Controls.Add(this.gbxBattleLog);
-            this.Controls.Add(this.gbxPlayer1Dragon);
+            this.Controls.Add(this.gbxTurnPlayerDragon);
             this.Name = "frmBattle";
             this.Text = "Battle Log";
             this.Load += new System.EventHandler(this.frmBattle_Load);
-            this.gbxPlayer1Dragon.ResumeLayout(false);
-            this.gbxPlayer1Dragon.PerformLayout();
+            this.gbxTurnPlayerDragon.ResumeLayout(false);
+            this.gbxTurnPlayerDragon.PerformLayout();
             this.gbxBattleLog.ResumeLayout(false);
             this.gbxOpponent.ResumeLayout(false);
             this.gbxOpponent.PerformLayout();
@@ -176,16 +179,16 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbxPlayer1Dragon;
+        private System.Windows.Forms.GroupBox gbxTurnPlayerDragon;
         private System.Windows.Forms.Label lblPlayerHP;
-        private System.Windows.Forms.Button btnPlayer1Block;
-        private System.Windows.Forms.Button btnPlayer1Sp;
-        private System.Windows.Forms.Button btnPlayer1Atk;
+        private System.Windows.Forms.Button btnPlayerBlock;
+        private System.Windows.Forms.Button btnPlayerSp;
+        private System.Windows.Forms.Button btnPlayerAtk;
         private System.Windows.Forms.GroupBox gbxBattleLog;
         private System.Windows.Forms.RichTextBox rtbBattleLog;
         private System.Windows.Forms.GroupBox gbxOpponent;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblOpponentDragon;
+        private System.Windows.Forms.Label lblOpponentHP;
         private System.Windows.Forms.Button btnRest;
     }
 }
