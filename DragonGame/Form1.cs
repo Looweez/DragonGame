@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Net.WebRequestMethods;
 
 namespace DragonGame
@@ -64,11 +65,11 @@ namespace DragonGame
             InitializeComponent();
 
             //initialising arrays
-            P1data = new string[3];
+            P1data = new string[3] {"playername", "dragonname", "dragontype"};
             P2data = new string[3];
-            P1values= new int[4];
+            P1values = new int[4];
             P2values = new int[4];
- 
+
         }
 
         private void frmGameStart_Load(object sender, EventArgs e)
@@ -88,7 +89,7 @@ namespace DragonGame
             }
         }
 
-        public void saveValues(string playerName, string dragonName, string dragonType)  //method with parameters made public so both forms can access it
+        /*public void saveValues(string playerName, string dragonName, string dragonType)  //method with parameters made public so both forms can access it
         {
 
             //player 1 saving
@@ -182,12 +183,24 @@ namespace DragonGame
                         P2values[2] = EARTH_DRAG_SPATK;
                         P2values[3] = EARTH_DRAG_BLOCK;
                         break;
+
+
                 }
 
           
+        }*/
+
+        public void saveValues(string[] P1data, string[] P2data, int[] P1values, int[] P2values) //saveValues take 2
+        {
+            if (P1data[3] == FIRE_DRAG_NAME)
+            {
+                P1values[0] = FIRE_DRAG_HP;
+                //P1values[1]
+                //P1values[2]
+                //P1values[3]
+            }
+
         }
-
-
 
         private void radFire1_Click(object sender, EventArgs e) //changes appearance of form and dragon picturebox if 'fire' radio button selected
         {
@@ -365,16 +378,9 @@ namespace DragonGame
             }
         }
 
-        private void btnStart_Click(object sender, EventArgs e) //opens battle form after user clicks 'start game' button
-        {
 
-            frmBattle frmBattle = new frmBattle(P1values, P2values, P1data, P2data); //moves players data to frmBattle
-            frmBattle.Show();
-            this.Hide();
 
-        }
-
-        private void btnSave1_Click(object sender, EventArgs e)
+        private void btnSave1_Click(object sender, EventArgs e) //save player 1
         {
             if (txtDragonName1.Text != "" || txtPlayerName1.Text != "" || chosenDragon1 != null)  //if all fields are not empty, the saveValues method is called
             {
@@ -393,7 +399,10 @@ namespace DragonGame
             }
         }
 
-        private void btnSave2_Click(object sender, EventArgs e)
+
+
+
+        private void btnSave2_Click(object sender, EventArgs e) //save player 2
         {
             if (txtDragonName2.Text != "" || txtPlayerName2.Text != "" || chosenDragon2 != null)  //if all fields are not empty, the saveValues method is called
             {
@@ -411,5 +420,43 @@ namespace DragonGame
                 MessageBox.Show("Please fill in your name, dragon name and/or dragon type.", "ERROR", MessageBoxButtons.OK);   //displays an error message if any fields are empty
             }
         }
+        private void btnStart_Click(object sender, EventArgs e) //opens battle form after user clicks 'start game' button
+        {
+            //p1
+            P1data[0] = txtPlayerName1.Text;
+            P1data[1] = txtDragonName1.Text;
+            if (radFire1.Checked == true)
+            {
+                P1data[2] = FIRE_DRAG_NAME;
+
+            }
+            if (radIce1.Checked == true)
+            {
+                P1data[2] = ICE_DRAG_NAME;
+            }
+            if (radWind1.Checked == true)
+            {
+                P1data[2] = WIND_DRAG_NAME;
+            }
+            if (radEarth1.Checked == true)
+            {
+                P1data[2] = EARTH_DRAG_NAME;
+            }
+
+
+
+            
+
+            //p2
+            P2data[0] = txtPlayerName2.Text;
+            P2data[1] = txtDragonName2.Text;
+
+
+            frmBattle frmBattle = new frmBattle(P1values, P2values, P1data, P2data); //moves players data to frmBattle
+            frmBattle.Show();
+            this.Hide();
+
+        }
     }
+
 }
