@@ -190,16 +190,85 @@ namespace DragonGame
           
         }*/
 
-        public void saveValues(string[] P1data, string[] P2data, int[] P1values, int[] P2values) //saveValues take 2
+        
+        public void saveValues1(string[] P1data, int[] P1values) //saveValues take 2
         {
-            if (P1data[3] == FIRE_DRAG_NAME)
+
+            //p1
+            P1data[0] = txtPlayerName1.Text;
+            P1data[1] = txtDragonName1.Text;
+            if (radFire1.Checked == true)
             {
+                P1data[2] = FIRE_DRAG_NAME;
                 P1values[0] = FIRE_DRAG_HP;
-                //P1values[1]
-                //P1values[2]
-                //P1values[3]
+                P1values[1] = FIRE_DRAG_ATK;
+                P1values[2] = FIRE_DRAG_SPATK;
+                P1values[3] = FIRE_DRAG_BLOCK;
+            }
+            if (radIce1.Checked == true)
+            {
+                P1data[2] = ICE_DRAG_NAME;
+                P1values[0] = ICE_DRAG_HP;
+                P1values[1] = ICE_DRAG_ATK;
+                P1values[2] = ICE_DRAG_SPATK;
+                P1values[3] = ICE_DRAG_BLOCK;
+            }
+            if (radWind1.Checked == true)
+            {
+                P1data[2] = WIND_DRAG_NAME;
+                P1values[0] = WIND_DRAG_HP;
+                P1values[1] = WIND_DRAG_ATK;
+                P1values[2] = WIND_DRAG_SPATK;
+                P1values[3] = WIND_DRAG_BLOCK;
+            }
+            if (radEarth1.Checked == true)
+            {
+                P1data[2] = EARTH_DRAG_NAME;
+                P1values[0] = EARTH_DRAG_HP;
+                P1values[1] = EARTH_DRAG_ATK;
+                P1values[2] = EARTH_DRAG_SPATK;
+                P1values[3] = EARTH_DRAG_BLOCK;
             }
 
+        }
+        public void saveValues2(string[] P2data,int[] P2values) 
+        {
+            //p2
+            P2data[0] = txtPlayerName2.Text;
+            P2data[1] = txtDragonName2.Text;
+
+            if (radFire2.Checked == true)
+            {
+                P2data[2] = FIRE_DRAG_NAME;
+                P2values[0] = FIRE_DRAG_HP;
+                P2values[1] = FIRE_DRAG_ATK;
+                P2values[2] = FIRE_DRAG_SPATK;
+                P2values[3] = FIRE_DRAG_BLOCK;
+            }
+            if (radIce2.Checked == true)
+            {
+                P2data[2] = ICE_DRAG_NAME;
+                P2values[0] = ICE_DRAG_HP;
+                P2values[1] = ICE_DRAG_ATK;
+                P2values[2] = ICE_DRAG_SPATK;
+                P2values[3] = ICE_DRAG_BLOCK;
+            }
+            if (radWind2.Checked == true)
+            {
+                P2data[2] = WIND_DRAG_NAME;
+                P2values[0] = WIND_DRAG_HP;
+                P2values[1] = WIND_DRAG_ATK;
+                P2values[2] = WIND_DRAG_SPATK;
+                P2values[3] = WIND_DRAG_BLOCK;
+            }
+            if (radEarth2.Checked == true)
+            {
+                P2data[2] = EARTH_DRAG_NAME;
+                P2values[0] = EARTH_DRAG_HP;
+                P2values[1] = EARTH_DRAG_ATK;
+                P2values[2] = EARTH_DRAG_SPATK;
+                P2values[3] = EARTH_DRAG_BLOCK;
+            }
         }
 
         private void radFire1_Click(object sender, EventArgs e) //changes appearance of form and dragon picturebox if 'fire' radio button selected
@@ -384,7 +453,7 @@ namespace DragonGame
         {
             if (txtDragonName1.Text != "" || txtPlayerName1.Text != "" || chosenDragon1 != null)  //if all fields are not empty, the saveValues method is called
             {
-                saveValues(txtPlayerName1.Text, txtDragonName1.Text, chosenDragon1);
+                saveValues1(P1data, P1values);
                 btnSave1.Enabled = false;
                 saveValuesCalled1 = true;
                 if (saveValuesCalled1 == true && saveValuesCalled2 == true)  //if the saveValues method has been called for both players, then btnstart will be enabled
@@ -406,7 +475,7 @@ namespace DragonGame
         {
             if (txtDragonName2.Text != "" || txtPlayerName2.Text != "" || chosenDragon2 != null)  //if all fields are not empty, the saveValues method is called
             {
-                saveValues(txtPlayerName2.Text, txtDragonName2.Text, chosenDragon2);
+                saveValues2(P2data, P2values);
                 btnSave2.Enabled = false;
                 saveValuesCalled2 = true;
                 if (saveValuesCalled1 == true && saveValuesCalled2 == true)  //if the saveValues method has been called for both players, then btnstart will be enabled
@@ -422,35 +491,6 @@ namespace DragonGame
         }
         private void btnStart_Click(object sender, EventArgs e) //opens battle form after user clicks 'start game' button
         {
-            //p1
-            P1data[0] = txtPlayerName1.Text;
-            P1data[1] = txtDragonName1.Text;
-            if (radFire1.Checked == true)
-            {
-                P1data[2] = FIRE_DRAG_NAME;
-
-            }
-            if (radIce1.Checked == true)
-            {
-                P1data[2] = ICE_DRAG_NAME;
-            }
-            if (radWind1.Checked == true)
-            {
-                P1data[2] = WIND_DRAG_NAME;
-            }
-            if (radEarth1.Checked == true)
-            {
-                P1data[2] = EARTH_DRAG_NAME;
-            }
-
-
-
-            
-
-            //p2
-            P2data[0] = txtPlayerName2.Text;
-            P2data[1] = txtDragonName2.Text;
-
 
             frmBattle frmBattle = new frmBattle(P1values, P2values, P1data, P2data); //moves players data to frmBattle
             frmBattle.Show();
