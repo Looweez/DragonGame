@@ -35,6 +35,9 @@ namespace DragonGame
         bool player1Turn = false;
         bool player2Turn = false;
 
+        bool player1Rest = false;
+        bool player2Rest = false;
+
         int player1Roll;
         int player2Roll;
 
@@ -179,6 +182,42 @@ namespace DragonGame
 
         }
 
+        private void checkDead()
+        {
+            //dragon 1 dies
+            if (dragonHP1 <= 0)
+            {
+                rtbBattleLog.Text += "\n" + dragonName1 + " is unable to continue. " + dragonName2 + " wins!";
+
+                //disable buttons
+                btnPlayerAtk.Enabled = false;
+                btnPlayerSp.Enabled = false;
+                btnPlayerBlock.Enabled = false;
+            }
+
+            //dragon 2 dies
+            if (dragonHP2 <= 0)
+            {
+                rtbBattleLog.Text += "\n" + dragonName2 + " is unable to continue. " + dragonName1 + " wins!";
+
+                //disable buttons
+                btnPlayerAtk.Enabled = false;
+                btnPlayerSp.Enabled = false;
+                btnPlayerBlock.Enabled = false;
+            }
+        }
+
+        //
+        //resting
+        //
+        private void resting()
+        {
+            if (player1Turn == true)
+            {
+
+            }
+        }
+
         //
         //blocking
         //
@@ -198,6 +237,10 @@ namespace DragonGame
                 rtbBattleLog.Text += "\n" + dragonName2 + " blocks for " + dragonBLOCK2 + " damage!";
                 
             }
+
+            //scrolling
+            rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
+            rtbBattleLog.ScrollToCaret();
 
             playerTurn();
         }
@@ -255,6 +298,12 @@ namespace DragonGame
                                                  + "\n---------------------------------------------------\n";
                 block1 = false;
             }
+
+            checkDead();
+
+            //scrolling
+            rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
+            rtbBattleLog.ScrollToCaret();
 
             playerTurn();
 
@@ -318,6 +367,12 @@ namespace DragonGame
                 rtbBattleLog.Text += "\n" + dragonName2 + " special attacks " + dragonName1 + "! " + dragonName1 + " takes " + dragonSPATK2 + " damage, and is now on " + dragonHP1 + "HP"
                                                  + "\n---------------------------------------------------\n";
             }
+
+            checkDead();
+
+            //scrolling
+            rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
+            rtbBattleLog.ScrollToCaret();
 
             playerTurn();
 
