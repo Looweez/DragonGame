@@ -210,11 +210,16 @@ namespace DragonGame
         //
         //resting
         //
-        private void resting()
+        private void rest()
         {
-            if (player1Turn == true)
+            if (player1Turn == true && player1Rest == true)
             {
+                btnRest.Visible = true;
+            }
 
+            if (player2Turn == true && player2Rest == true)
+            {
+                btnRest.Visible = true;
             }
         }
 
@@ -319,6 +324,8 @@ namespace DragonGame
                 dragonHP2 -= dragonSPATK1;
                 rtbBattleLog.Text += "\n" + dragonName1 + " special attacks " + dragonName2 + "! " + dragonName2 + " takes " + dragonSPATK1 + " damage, and is now on " + dragonHP2 + "HP"
                                                  + "\n---------------------------------------------------\n";
+
+                player1Rest = true;
             }
             else if (player1Turn == true)
             {
@@ -339,6 +346,8 @@ namespace DragonGame
 
                 rtbBattleLog.Text += "\n" + dragonName1 + " special attacks " + dragonName2 + "! " + dragonName2 + " takes " + dragonSPATK1 + " damage, and is now on " + dragonHP2 + "HP"
                                                  + "\n---------------------------------------------------\n";
+
+                player1Rest = true;
             }
 
             else if (player2Turn == true && block1 == false)
@@ -346,6 +355,8 @@ namespace DragonGame
                 dragonHP1 -= dragonSPATK2;
                 rtbBattleLog.Text += "\n" + dragonName2 + " special attacks " + dragonName1 + "! " + dragonName1 + " takes " + dragonSPATK2 + " damage, and is now on " + dragonHP1 + "HP"
                                  + "\n---------------------------------------------------\n";
+
+                player2Rest = true;
             }
             else if (player2Turn == true)
             {
@@ -366,8 +377,11 @@ namespace DragonGame
 
                 rtbBattleLog.Text += "\n" + dragonName2 + " special attacks " + dragonName1 + "! " + dragonName1 + " takes " + dragonSPATK2 + " damage, and is now on " + dragonHP1 + "HP"
                                                  + "\n---------------------------------------------------\n";
+
+                player2Rest = true;
             }
 
+            rest();
             checkDead();
 
             //scrolling
@@ -380,7 +394,18 @@ namespace DragonGame
 
         private void btnRest_Click(object sender, EventArgs e)
         {
-
+            if (player1Rest == true)
+            {
+                rtbBattleLog.Text += dragonName1 + " is too tired to fight, and rests a while";
+                btnRest.Visible = false;
+                player1Rest = false;
+            }
+            if (player2Rest == true)
+            {
+                rtbBattleLog.Text += dragonName2 + " is too tired to fight, and rests a while";
+                btnRest.Visible = false;
+                player2Rest = false;
+            }
         }
     }
 }
