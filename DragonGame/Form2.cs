@@ -29,6 +29,7 @@ namespace DragonGame
         int dragonBLOCK1;
         int dragonBLOCK2;
 
+
         bool block1 = false;
         bool block2 = false;
 
@@ -40,6 +41,8 @@ namespace DragonGame
 
         int player1Roll;
         int player2Roll;
+
+        int counter = 0;
 
 
 
@@ -69,8 +72,9 @@ namespace DragonGame
 
         private void frmBattle_Load(object sender, EventArgs e)
         {
-            
+
             btnRest.Visible = false;
+
             takeInitiative();
             if (takeInitiative() == player1Roll)
             {
@@ -80,7 +84,8 @@ namespace DragonGame
             {
                 MessageBox.Show("Player 2 starts. Their dice showed " + player2Roll, "Turn initiative", MessageBoxButtons.OK);
             }
-            
+
+            counter++; //had to put this here because for some reason there were 3 turns at the start of the game.
         }
 
         private int randomRoll() //method for random number from 1 to 6
@@ -92,7 +97,7 @@ namespace DragonGame
 
         public int takeInitiative() //method for the initiative rolls, determines who starts each turn
         {
-            rtbBattleLog.Text += "\n-------------------------------------------------\n NEW TURN \n-------------------------------------------------\n";
+            
             player1Roll = randomRoll();
             player2Roll = randomRoll();
             while (player1Roll == player2Roll) //if equal roll again
@@ -103,7 +108,8 @@ namespace DragonGame
 
             if (player1Roll > player2Roll)  //if player 1's roll is higher, then they take the initiative
             {
-                rtbBattleLog.Text = "";
+               
+                rtbBattleLog.Text += "\n NEW TURN \n-------------------------------------------------\n";
 
                 rtbBattleLog.Text += "\n" + playerName1 + "'s dragon " + dragonName1 + " takes initiative"
                                                  + "\n---------------------------------------------------\n" + playerName1 + "'s turn:\n";
@@ -121,7 +127,8 @@ namespace DragonGame
             }
             else if (player1Roll < player2Roll)  //if player 2's roll is higher, then they take the initiative
             {
-                rtbBattleLog.Text = "";
+                
+                rtbBattleLog.Text += "\n NEW TURN \n-------------------------------------------------\n";
 
                 rtbBattleLog.Text += "\n" + playerName2 + "'s dragon " + dragonName2 + " takes initiative!"
                                                  + "\n---------------------------------------------------\n" + playerName2 + "'s turn:\n";
@@ -144,14 +151,21 @@ namespace DragonGame
 
         }
 
-        private void playerTurn()
+        void playerTurn()
         {
             
-            if (player1Turn == true && !player2Turn) //if player 2 has not had their turn
+            if (counter == 2) 
+            {
+                takeInitiative();
+                counter = 0; // reset counter 
+            }
+
+            else if (player1Turn == true)
             {
                 player1Turn = false;
                 player2Turn = true;
 
+                //update battle log
                 rtbBattleLog.Text += "\n" + playerName2 + "'s turn:\n";
                 gbxTurnPlayerDragon.Text = dragonName2 + " the " + dragonType2 + "'s turn";
                 lblPlayerHP.Text = "HP: " + dragonHP2;
@@ -159,13 +173,16 @@ namespace DragonGame
                 gbxOpponent.Text = "Opponent: " + playerName1;
                 lblOpponentDragon.Text = dragonName1 + ", the " + dragonType1;
                 lblOpponentHP.Text = "HP: " + dragonHP1;
+
+
                 rest();
             }
-            else if (player2Turn == true && !player1Turn) //if player 1 has not had their turn
+            else if (player2Turn == true)
             {
                 player2Turn = false;
                 player1Turn = true;
 
+                //update battle log
                 rtbBattleLog.Text += "\n" + playerName1 + "'s turn:\n";
                 gbxTurnPlayerDragon.Text = dragonName1 + " the " + dragonType1 + "'s turn";
                 lblPlayerHP.Text = "HP: " + dragonHP1;
@@ -173,14 +190,10 @@ namespace DragonGame
                 gbxOpponent.Text = "Opponent: " + playerName2;
                 lblOpponentDragon.Text = dragonName2 + ", the " + dragonType2;
                 lblOpponentHP.Text = "HP: " + dragonHP2;
+
+
                 rest();
             }
-
-            if (!player1Turn && !player2Turn) //if both players have had their turn
-            {
-                takeInitiative();
-            }
-            
 
         }
         //
@@ -256,11 +269,14 @@ namespace DragonGame
                 
             }
 
+            playerTurn();
+            counter++;
+
             //scrolling
             rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
             rtbBattleLog.ScrollToCaret();
 
-            playerTurn();
+            
         }
         //
         //attacking
@@ -319,11 +335,12 @@ namespace DragonGame
 
             checkDead();
 
+            playerTurn();
+            counter++;
+
             //scrolling
             rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
             rtbBattleLog.ScrollToCaret();
-
-            playerTurn();
 
         }
         //
@@ -401,13 +418,13 @@ namespace DragonGame
             
             checkDead();
 
+            playerTurn();
+            counter++;
+
             //scrolling
             rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
             rtbBattleLog.ScrollToCaret();
 
-            
-            playerTurn();
-            
 
         }
 
@@ -415,17 +432,25 @@ namespace DragonGame
         {
             if (player1Rest == true)
             {
-                rtbBattleLog.Text += dragonName1 + " is too tired to fight, and rests a while";
+                rtbBattleLog.Text += dragonName1 + " is too tired to fight, and rests a while.";
                 
                 player1Rest = false;
             }
             if (player2Rest == true)
             {
-                rtbBattleLog.Text += dragonName2 + " is too tired to fight, and rests a while";
+                rtbBattleLog.Text += dragonName2 + " is too tired to fight, and rests a while.";
                 
                 player2Rest = false;
             }
             btnRest.Visible = false;
+
+            playerTurn();
+            counter++;
+
+            //scrolling
+            rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
+            rtbBattleLog.ScrollToCaret();
+  
         }
     }
 }
