@@ -159,6 +159,7 @@ namespace DragonGame
                 gbxOpponent.Text = "Opponent: " + playerName1;
                 lblOpponentDragon.Text = dragonName1 + ", the " + dragonType1;
                 lblOpponentHP.Text = "HP: " + dragonHP1;
+                rest();
             }
             else if (player2Turn == true && !player1Turn) //if player 1 has not had their turn
             {
@@ -172,6 +173,7 @@ namespace DragonGame
                 gbxOpponent.Text = "Opponent: " + playerName2;
                 lblOpponentDragon.Text = dragonName2 + ", the " + dragonType2;
                 lblOpponentHP.Text = "HP: " + dragonHP2;
+                rest();
             }
 
             if (!player1Turn && !player2Turn) //if both players have had their turn
@@ -181,7 +183,9 @@ namespace DragonGame
             
 
         }
-
+        //
+        //dead check
+        //
         private void checkDead()
         {
             //dragon 1 dies
@@ -205,6 +209,10 @@ namespace DragonGame
                 btnPlayerSp.Enabled = false;
                 btnPlayerBlock.Enabled = false;
             }
+
+            //scrolling
+            rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
+            rtbBattleLog.ScrollToCaret();
         }
 
         //
@@ -217,9 +225,14 @@ namespace DragonGame
                 btnRest.Visible = true;
             }
 
-            if (player2Turn == true && player2Rest == true)
+            else if (player2Turn == true && player2Rest == true)
             {
                 btnRest.Visible = true;
+            }
+
+            else 
+            {
+                btnRest.Visible = false;
             }
         }
 
@@ -326,6 +339,7 @@ namespace DragonGame
                                                  + "\n---------------------------------------------------\n";
 
                 player1Rest = true;
+                
             }
             else if (player1Turn == true)
             {
@@ -348,6 +362,7 @@ namespace DragonGame
                                                  + "\n---------------------------------------------------\n";
 
                 player1Rest = true;
+                
             }
 
             else if (player2Turn == true && block1 == false)
@@ -357,6 +372,7 @@ namespace DragonGame
                                  + "\n---------------------------------------------------\n";
 
                 player2Rest = true;
+                
             }
             else if (player2Turn == true)
             {
@@ -379,16 +395,19 @@ namespace DragonGame
                                                  + "\n---------------------------------------------------\n";
 
                 player2Rest = true;
+                
             }
 
-            rest();
+            
             checkDead();
 
             //scrolling
             rtbBattleLog.SelectionStart = rtbBattleLog.Text.Length;
             rtbBattleLog.ScrollToCaret();
 
+            
             playerTurn();
+            
 
         }
 
@@ -397,15 +416,16 @@ namespace DragonGame
             if (player1Rest == true)
             {
                 rtbBattleLog.Text += dragonName1 + " is too tired to fight, and rests a while";
-                btnRest.Visible = false;
+                
                 player1Rest = false;
             }
             if (player2Rest == true)
             {
                 rtbBattleLog.Text += dragonName2 + " is too tired to fight, and rests a while";
-                btnRest.Visible = false;
+                
                 player2Rest = false;
             }
+            btnRest.Visible = false;
         }
     }
 }
